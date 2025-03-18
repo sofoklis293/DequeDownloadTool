@@ -30,12 +30,13 @@ Deque Assistant Tool is a command-line utility designed to automate the process 
 Ensure you have the following installed on your system:
 
 1. **.NET SDK**  
-   [Download from .NET official site](https://dotnet.microsoft.com/en-us/download)
+   [Download from .NET official site](https://dotnet.microsoft.com/en-us/download/dotnet/7.0)
 2. **Google Chrome Browser**  
    [Download Google Chrome](https://www.google.com/chrome/)
 3. **ChromeDriver** matching your Chrome version  
    [Download ChromeDriver](https://sites.google.com/chromium.org/driver/)
-4. **Required NuGet Packages**
+4. Download Repository And Extract
+5. **Required NuGet Packages**
    Install the necessary dependencies via the command line:
 
    ```sh
