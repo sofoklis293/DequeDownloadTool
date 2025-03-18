@@ -55,3 +55,4 @@ nunit-*.xml
 .vs/DequeAssistantTool/v17/.suo
 /.vs/DequeAssistantTool/FileContentIndex
 /.vs
+DequeAssistantTool.csproj.user
