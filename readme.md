@@ -1,7 +1,7 @@
 # 🚀 Deque Assistant Tool
 
 ## 📌 Overview
-Deque Assistant Tool is a command-line utility designed to automate the process of downloading accessibility reports from given URLs, converting them into CSV format, and consolidating the data for further analysis. This tool uses **Selenium WebDriver** to navigate through webpages, **ExcelDataReader** to extract URLs from an Excel file, and **Newtonsoft.Json** for JSON parsing.
+Deque Assistant Tool automates the bulk downloading of accessibility reports generated from Axe DeV Tools Extension, converts them from JSON to CSV format, and consolidates them into a single comprehensive report for streamlined analysis.
 
 ---
 
