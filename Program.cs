@@ -22,19 +22,19 @@ class Program
         Console.WriteLine("converting them to CSV, and consolidating data for analysis.");
         Console.WriteLine();
 
-        Console.Write("👉 Would you like to proceed with downloading JSON reports? (y/n): ");
+        Console.Write("   Would you like to proceed with downloading JSON reports? (y/n): ");
         string userInput = Console.ReadLine()?.Trim().ToLower();
         if (userInput != "y")
         {
-            Console.WriteLine("❌ Operation canceled by user. Exiting...");
+            Console.WriteLine("   Operation canceled by user. Exiting...");
             return;
         }
 
-        Console.Write("\n📂 Please enter the full path of the Excel file containing the URLs: ");
+        Console.Write("\n   Please enter the full path of the Excel file containing the URLs: ");
         string excelFilePath = Console.ReadLine()?.Trim();
         if (string.IsNullOrEmpty(excelFilePath) || !File.Exists(excelFilePath))
         {
-            Console.WriteLine("❌ Invalid file path. Please restart the program and provide a valid path.");
+            Console.WriteLine("   Invalid file path. Please restart the program and provide a valid path.");
             return;
         }
 
@@ -44,10 +44,10 @@ class Program
 
         if (Directory.Exists(downloadDir))
         {
-            Console.WriteLine("\n📂 The 'JSON_Reports' folder already exists. Choose an option:");
-            Console.WriteLine("   1️⃣ Overwrite the existing folder");
-            Console.WriteLine("   2️⃣ Create a new folder with a timestamp");
-            Console.WriteLine("   3️⃣ Cancel the operation");
+            Console.WriteLine("\n   The 'JSON_Reports' folder already exists. Choose an option:");
+            Console.WriteLine("   1️ - Overwrite the existing folder");
+            Console.WriteLine("   2️ - Create a new folder with a timestamp");
+            Console.WriteLine("   3️ - Cancel the operation");
             Console.Write("👉 Enter your choice (1/2/3): ");
             string option = Console.ReadLine()?.Trim();
 
@@ -64,7 +64,7 @@ class Program
             }
             else
             {
-                Console.WriteLine("❌ Operation canceled by user. Exiting...");
+                Console.WriteLine("   Operation canceled by user. Exiting...");
                 return;
             }
         }
@@ -76,7 +76,7 @@ class Program
         var urls = ReadUrlsFromExcel(excelFilePath);
         if (urls.Length == 0)
         {
-            Console.WriteLine("⚠ No URLs found in the provided Excel file. Please check the file and try again.");
+            Console.WriteLine("   No URLs found in the provided Excel file. Please check the file and try again.");
             return;
         }
 
@@ -117,7 +117,7 @@ class Program
         }
 
         driver.Quit();
-        Console.WriteLine($"\n✅ All files have been downloaded successfully! They are saved in: {downloadDir}");
+        Console.WriteLine($"\n  All files have been downloaded successfully! They are saved in: {downloadDir}");
 
         Console.Write("\n📊 Would you like to convert the downloaded JSON reports to CSV? (y/n): ");
         string convertInput = Console.ReadLine()?.Trim().ToLower();
