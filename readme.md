@@ -1,17 +1,15 @@
-# 🚀 Deque Assistant Tool
+# 🚀Axe DevTools Extension - Bulk Report Downloader
 
 ## 📌 Overview
-Deque Assistant Tool is a command-line utility designed to automate the process of downloading accessibility reports from given URLs, converting them into CSV format, and consolidating the data for further analysis. This tool uses **Selenium WebDriver** to navigate through webpages, **ExcelDataReader** to extract URLs from an Excel file, and **Newtonsoft.Json** for JSON parsing.
+This Tool is command-line based, designed to automate the process of downloading accessibility reports generated from Axe DevTools extension as a JSON format, given the URLs. Converting them into CSV format, and consolidating the data into single CSV for further analysis.
 
 ---
 
 ## 📂 Features
-✅ **Automated Report Downloading** – Uses Selenium WebDriver to fetch accessibility reports from specified URLs.  
-✅ **Excel URL Extraction** – Reads URLs from an Excel file and processes them one by one.  
-✅ **JSON to CSV Conversion** – Converts downloaded JSON reports into structured CSV format.  
-✅ **Data Consolidation** – Merges all individual CSV files into a single consolidated report.  
-✅ **Headless Mode Execution** – Runs in the background without opening a visible browser.  
-✅ **Error Handling** – Skips failed downloads and logs errors for review.  
+
+✅ **Bulk JSON Report Download** – Reads URLs from an Excel file and downloads the JSON reports.  
+✅ **CSV Conversion** – Converts all the JSON reports into CSV.   
+✅ **Data Consolidation** – Merges all individual CSV files into a single consolidated csv report.  
 
 ---
 
@@ -31,20 +29,29 @@ Ensure you have the following installed on your system:
 
 1. **.NET SDK**  
    [Download from .NET official site](https://dotnet.microsoft.com/en-us/download/dotnet/7.0)
-2. **Google Chrome Browser**  
+2. **Google Chrome Browser** - Skip if you already have Google Chrome  
    [Download Google Chrome](https://www.google.com/chrome/)
 3. **ChromeDriver** matching your Chrome version  
    [Download ChromeDriver](https://sites.google.com/chromium.org/driver/)
-4. Download Repository And Extract
-5. **Required NuGet Packages**
-   Install the necessary dependencies via the command line:
 
-   ```sh
-   dotnet add package ExcelDataReader
-   dotnet add package Selenium.WebDriver
-   dotnet add package Newtonsoft.Json
-   
 ---
+## 📌 Guide
+
+
+1. Create a .xlsx file with one column named URL that contains all the report URLs
+2. Run the application
+3. "Would you like to proceed with downloading JSON reports? (y/n)" - Click y and then enter.
+4. Once the application prompts you to put the full path  of the Excel file, you have to put the path to the above Excel file   
+         - Mac: Drag the file into the terminal   
+         - Windows: Right-click on the file "Copy as Path", and then paste it into the terminal. (Make sure you remove " character at the beginning and end)
+5. The 'JSON_Reports' folder already exists. Choose an option:   
+   1)Overwrite the existing folder   
+   2)Create a new folder with a timestamp   
+   3)Cancel the operation   
+   
+   Choose Options 1/2/3 and click enter   
+6. "Would you like to convert the downloaded JSON reports to CSV? (y/n)" - Click y and then enter.
+   
 
 ## 📥 How to run
 
