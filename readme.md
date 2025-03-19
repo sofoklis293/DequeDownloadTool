@@ -14,7 +14,7 @@ This Tool is command-line based, designed to automate the process of downloading
 ---
 
 ## 🛠 Technologies Used
-- **C# (.NET Core)**
+- **C# (.NET 6)**
 - **Selenium WebDriver** (ChromeDriver)
 - **Newtonsoft.Json** (for JSON parsing)
 - **ExcelDataReader** (for reading Excel files)
@@ -28,7 +28,7 @@ This Tool is command-line based, designed to automate the process of downloading
 Ensure you have the following installed on your system:
 
 1. **.NET SDK**  
-   [Download from .NET official site](https://dotnet.microsoft.com/en-us/download/dotnet/7.0)
+   [Download from .NET official site](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
 2. **Google Chrome Browser** - Skip if you already have Google Chrome  
    [Download Google Chrome](https://www.google.com/chrome/)
 3. **ChromeDriver** matching your Chrome version  
@@ -39,7 +39,7 @@ Ensure you have the following installed on your system:
 
 
 1. Create a .xlsx file with one column named URL that contains all the report URLs
-2. Run the application
+2. [Run the application](#💝-how-to-run).
 3. "Would you like to proceed with downloading JSON reports? (y/n)" - Click y and then enter.
 4. Once the application prompts you to put the full path  of the Excel file, you have to put the path to the above Excel file   
          - Mac: Drag the file into the terminal   
