@@ -39,7 +39,7 @@ Ensure you have the following installed on your system:
 
 
 1. Create a .xlsx file with one column named URL that contains all the report URLs
-2. [Run the application](#💝-how-to-run).
+2. [Run the application](#-how-to-run).
 3. "Would you like to proceed with downloading JSON reports? (y/n)" - Click y and then enter.
 4. Once the application prompts you to put the full path  of the Excel file, you have to put the path to the above Excel file   
          - Mac: Drag the file into the terminal   
