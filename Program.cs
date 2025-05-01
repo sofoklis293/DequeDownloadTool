@@ -9,6 +9,9 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using ExcelDataReader;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
+using WebDriverManager;
+using WebDriverManager.DriverConfigs.Impl;
 
 class Program
 {
@@ -22,13 +25,13 @@ class Program
         Console.WriteLine("converting them to CSV, and consolidating data for analysis.");
         Console.WriteLine();
 
-        Console.Write("   Would you like to proceed with downloading JSON reports? (y/n): ");
-        string userInput = Console.ReadLine()?.Trim().ToLower();
-        if (userInput != "y")
-        {
-            Console.WriteLine("   Operation canceled by user. Exiting...");
-            return;
-        }
+        //Console.Write("   Would you like to proceed with downloading JSON reports? (y/n): ");
+        //string userInput = Console.ReadLine()?.Trim().ToLower();
+        //if (userInput != "y")
+        //{
+        //    Console.WriteLine("   Operation canceled by user. Exiting...");
+        //    return;
+        //}
 
         Console.Write("\n   Please enter the full path of the Excel file containing the URLs: ");
         string excelFilePath = Console.ReadLine()?.Trim();
@@ -37,42 +40,12 @@ class Program
             Console.WriteLine("   Invalid file path. Please restart the program and provide a valid path.");
             return;
         }
-
+        string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
         string selectedDirectory = Path.GetDirectoryName(excelFilePath);
-        string downloadDir = Path.Combine(selectedDirectory, "JSON_Reports");
-        string csvDir = Path.Combine(selectedDirectory, "CSV_Reports");
-
-        if (Directory.Exists(downloadDir))
-        {
-            Console.WriteLine("\n   The 'JSON_Reports' folder already exists. Choose an option:");
-            Console.WriteLine("   1️ - Overwrite the existing folder");
-            Console.WriteLine("   2️ - Create a new folder with a timestamp");
-            Console.WriteLine("   3️ - Cancel the operation");
-            Console.Write("👉 Enter your choice (1/2/3): ");
-            string option = Console.ReadLine()?.Trim();
-
-            if (option == "1")
-            {
-                Directory.Delete(downloadDir, true);
-                Directory.CreateDirectory(downloadDir);
-            }
-            else if (option == "2")
-            {
-                string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
-                downloadDir = Path.Combine(selectedDirectory, $"JSON_Reports_{timestamp}");
-                Directory.CreateDirectory(downloadDir);
-            }
-            else
-            {
-                Console.WriteLine("   Operation canceled by user. Exiting...");
-                return;
-            }
-        }
-        else
-        {
-            Directory.CreateDirectory(downloadDir);
-        }
-
+        string downloadDir = Path.Combine(selectedDirectory, $"JSON_Reports_{timestamp}");
+        string csvDir = Path.Combine(selectedDirectory, $"CSV_Reports_{timestamp}");
+        Directory.CreateDirectory(downloadDir);
+       
         var urls = ReadUrlsFromExcel(excelFilePath);
         if (urls.Length == 0)
         {
@@ -93,6 +66,7 @@ class Program
         options.AddArgument("--silent");
         options.AddExcludedArgument("enable-logging");
 
+        new DriverManager().SetUpDriver(new ChromeConfig());
         IWebDriver driver = new ChromeDriver(options);
 
         foreach (string url in urls)
@@ -117,14 +91,14 @@ class Program
         }
 
         driver.Quit();
-        Console.WriteLine($"\n  All files have been downloaded successfully! They are saved in: {downloadDir}");
 
-        Console.Write("\n📊 Would you like to convert the downloaded JSON reports to CSV? (y/n): ");
-        string convertInput = Console.ReadLine()?.Trim().ToLower();
-        if (convertInput == "y")
-        {
-            SuppressConsoleOutput(() => ConvertJsonToCsv(downloadDir, csvDir));
-        }
+        Console.WriteLine("==============================================");
+        Console.WriteLine($"\n  All files have been downloaded successfully! They are saved in: {downloadDir}");
+        Console.WriteLine("     CONVERTION TO CSV STARTED     ");
+        Console.WriteLine("==============================================");
+
+        SuppressConsoleOutput(() => ConvertJsonToCsv(downloadDir, csvDir));
+
     }
 
     static void ConvertJsonToCsv(string jsonDir, string csvDir)
@@ -134,7 +108,7 @@ class Program
             Directory.CreateDirectory(csvDir);
         }
 
-        string consolidatedFile = Path.Combine(csvDir, "Report.csv");
+        string consolidatedFile = Path.Combine(csvDir, "_Report.csv");
         bool firstFile = true;
 
         string[] headers = { "ruleId", "description", "help", "helpUrl", "impact", "isManual", "needsReview", "igt",
