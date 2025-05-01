@@ -40,18 +40,9 @@ Ensure you have the following installed on your system:
 
 1. Create a .xlsx file with one column named URL that contains all the report URLs
 2. [Run the application](#-how-to-run).
-3. "Would you like to proceed with downloading JSON reports? (y/n)" - Click y and then enter.
-4. Once the application prompts you to put the full path  of the Excel file, you have to put the path to the above Excel file   
+3. Once the application runs, it will prompt you to enter the full path of the Excel file. You have to put the path to the above Excel file and press "Enter"
          - Mac: Drag the file into the terminal   
          - Windows: Right-click on the file "Copy as Path", and then paste it into the terminal. (Make sure you remove " character at the beginning and end)
-5. The 'JSON_Reports' folder already exists. Choose an option:   
-   1)Overwrite the existing folder   
-   2)Create a new folder with a timestamp   
-   3)Cancel the operation   
-   
-   Choose Options 1/2/3 and click enter   
-6. "Would you like to convert the downloaded JSON reports to CSV? (y/n)" - Click y and then enter.
-   
 
 ## 📥 How to run
 
@@ -67,8 +58,8 @@ Ensure you have the following installed on your system:
 
 - **My Project**
     - **ReportUrls.xlsx** - provided by user:
-    - **JSON_Reports** - Generated
-    - **CSV_Reports** - Generated
+    - **JSON_Reports_{timestamp}** - Generated
+    - **CSV_Reports_{timestamp}** - Generated
         - **All CSV Reports** (Individual CSV Reports)
         - **Report.csv** (Consolidating Report)
         
